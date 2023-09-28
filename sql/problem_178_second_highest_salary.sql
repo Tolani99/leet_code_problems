@@ -1,5 +1,4 @@
-
-"""
+/*
 Table: Employee
 
 +-------------+------+
@@ -50,7 +49,7 @@ Output:
 +---------------------+
 | null                |
 +---------------------+
-"""
+*/
 
 SELECT MAX(salary) AS SecondHighestSalary
 FROM Employee
