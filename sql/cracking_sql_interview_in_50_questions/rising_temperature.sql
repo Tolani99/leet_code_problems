@@ -52,6 +52,7 @@ WHERE w1.temperature > w2.temperature;
 Accepted
 115 ms
 Case 1
+
 Input
 Weather =
 | id | recordDate | temperature |
@@ -60,11 +61,13 @@ Weather =
 | 2  | 2015-01-02 | 25          |
 | 3  | 2015-01-03 | 20          |
 | 4  | 2015-01-04 | 30          |
+
 Output
 | id |
 | -- |
 | 2  |
 | 4  |
+
 Expected
 | Id |
 | -- |
