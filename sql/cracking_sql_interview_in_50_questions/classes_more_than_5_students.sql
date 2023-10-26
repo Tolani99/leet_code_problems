@@ -49,5 +49,29 @@ Explanation:
 - Computer has 1 student, so we do not include it.
 */
 /* A prototype solution*/
-SELECT class FROM Courses WHERE COUNT(student) >= 5 GROUP BY student
-/* Yet to be run */
+SELECT class FROM Courses GROUP BY Student HAVING COUNT(student) >= 5
+
+/*
+Accepted
+141 ms
+Case 1
+Input
+Courses =
+| student | class    |
+| ------- | -------- |
+| A       | Math     |
+| B       | English  |
+| C       | Math     |
+| D       | Biology  |
+| E       | Math     |
+| F       | Computer |...
+View all
+Output
+| class |
+| ----- |
+| Math  |
+Expected
+| class |
+| ----- |
+| Math  |
+*/
