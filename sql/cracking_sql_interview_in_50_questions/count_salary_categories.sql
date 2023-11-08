@@ -50,25 +50,21 @@ Average Salary: No accounts.
 High Salary: Accounts 3, 6, and 8.
 */
 
-SELECT
-  categories.category AS category,
-  COALESCE(COUNT(accounts.income), 0) AS accounts_count
-FROM
-  (SELECT 'Low Salary' AS category
-   UNION
-   SELECT 'Average Salary' AS category
-   UNION
-   SELECT 'High Salary' AS category) AS categories
-LEFT JOIN
-  Accounts AS accounts
-ON
-  (CASE
-    WHEN accounts.income < 20000 THEN 'Low Salary'
-    WHEN accounts.income >= 20000 AND accounts.income <= 50000 THEN 'Average Salary'
-    ELSE 'High Salary'
-  END) = categories.category
-GROUP BY
-  categories.category;
+SELECT "Low Salary" AS category,
+       sum(income < 20000) AS accounts_count
+  FROM Accounts
+
+UNION
+
+SELECT "Average Salary" AS category,
+       sum(income BETWEEN 20000 AND 50000) AS accounts_count
+  FROM Accounts
+
+UNION
+
+SELECT "High Salary" AS category,
+       sum(income > 50000) AS accounts_count
+  FROM Accounts;
 
 /*
 Accepted
@@ -76,8 +72,8 @@ Editorial
 Solution
 Runtime
 Details
-2506ms
-Beats 53.08%of users with MySQL
+2203ms
+Beats 86.21%of users with MySQL
 Memory
 Details
 0.00MB
